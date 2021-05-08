@@ -1,11 +1,15 @@
 
 **Setup Ubuntu 20.04.2 LTS for Laravel 8**
 
+Install NGINX
+
+    sudo apt-get install nginx
+
+Install PHP 8
+
     sudo apt install software-properties-common
 
 >  It provides some useful scripts for adding and removing PPAs.
-
-Install PHP 8
 
     sudo add-apt-repository ppa:ondrej/php
     sudo apt update
@@ -17,5 +21,7 @@ Install PHP 8
 Install  Laravel 8 depedencies
 
     apt-get install php8.0-mysql php8.0-mbstring php8.0-xml php8.0-bcmath
+
+
 
 
