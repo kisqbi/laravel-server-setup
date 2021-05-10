@@ -67,8 +67,8 @@ Install  Laravel 8 depedencies
 
 Install MySql server 8
 
-    sudo apt install mysql-server  
-    mysql_secure_installation
+    sudo apt install mysql-server &&
+    sudo mysql_secure_installation
 
 
 It prompst some question
@@ -102,11 +102,21 @@ Completely remove MYSQL from  Ubuntu 20.04.2 LTS
     sudo apt-get dist-upgrade -y &&
     echo -e "\033[1;32m END: sudo apt-get dist-upgrade -y;\033[0m"
     .
+or line by line: 
 
-1.  sudo apt-get  **remove**  --purge  **mysql***
-2.  sudo apt-get purge  **mysql***
-3.  sudo apt-get autoremove.
-4.  sudo apt-get autoclean.
-5.  sudo apt-get  **remove**  dbconfig-**mysql**.
-6.  sudo apt-get dist-upgrade.
-7.  sudo apt-get install  **mysql**-server.
+sudo apt-get  **remove**  --purge  **mysql***
+sudo apt-get purge  **mysql***
+sudo apt-get autoremove
+sudo apt-get autoclean
+sudo apt-get  **remove**  dbconfig-**mysql**
+sudo apt-get dist-upgrade
+sudo apt-get install  **mysql**-server
+
+enter mysql 
+
+    mysql -u root -p
+
+    CREATE DATABASE [DB_USER];  
+    CREATE USER '[DB_USER]'@'localhost' IDENTIFIED BY ' [DB_PASSWORD]';  
+    GRANT ALL PRIVILEGES ON * . * TO '[DB_USER]'@'localhost';  
+    FLUSH PRIVILEGES;
