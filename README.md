@@ -1,20 +1,8 @@
 
-**Setup Ubuntu 20.04.2 LTS for Laravel 8**
 
-Install PHP 8
+## Setup Ubuntu 20.04.2 LTS for Laravel 8
 
-    sudo apt install software-properties-common
-
->  It provides some useful scripts for adding and removing PPAs.
-
-    sudo add-apt-repository ppa:ondrej/php
-    sudo apt update
-    sudo apt ugrade
-    sudo apt install php8.0-fpm
-    php -v
-    sudo service php8.0-fpm status
-
-Install NGINX
+### Install NGINX
 
     sudo apt-get install nginx
 
@@ -58,12 +46,33 @@ enable domain
 
     sudo ln -s /etc/nginx/sites-available/[DOMAIN] /etc/nginx/sites-enabled/
    
+### Install PHP 8
 
+    sudo apt install software-properties-common
+
+>  It provides some useful scripts for adding and removing PPAs.
+
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt update
+    sudo apt ugrade
+    sudo apt install php8.0-fpm
+    php -v
+    sudo service php8.0-fpm status
 
 
 Install  Laravel 8 depedencies
 
     apt-get install php8.0-mysql php8.0-mbstring php8.0-xml php8.0-bcmath
+
+
+### Configure Nginx and PHP 8 fpm
+
+create user for the domain ( or deploy user )
+
+adduser deploy  
+usermod -aG www-data deploy  
+chown -R deploy:www-data /var/www/mydomain/
+
 
 Install MySql server 8
 
@@ -120,3 +129,17 @@ enter mysql
     CREATE USER '[DB_USER]'@'localhost' IDENTIFIED BY ' [DB_PASSWORD]';  
     GRANT ALL PRIVILEGES ON * . * TO '[DB_USER]'@'localhost';  
     FLUSH PRIVILEGES;
+
+
+
+## Install Certbot
+
+    sudo apt install certbot python3-certbot-nginx
+
+### Adjust Firewall to Allow HTTPS Traffic
+The next step is to adjust the firewall to allow HTTPS traffic.
+
+If you followed the Nginx installation guide, you already enabled your firewall to allow Nginx HTTP. As you are adding Let’s Encrypt certificates, you need to configure the firewall for encrypted traffic.
+
+1. To ensure your firewall is active and allows HTTPS traffic, run the command:
+
